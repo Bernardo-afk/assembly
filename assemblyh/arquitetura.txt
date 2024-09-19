@@ -12,8 +12,31 @@ durante a  execução de um programa ( intruções )  )
 
                         Registradores específicos 
     PC -  Program Counter : Armazen o endereço da próxima intruções a ser executada  
+        
+                        Estrutura em PC 
+        {    END                Conteúdo 
+            2                     INSTR2 
+            3                     INSTR3
+            4                     INSTR4                        
+            5                     INSTR5
+            6                     INSTR6
+            ..                    INSTR..
+        }
 
-    SP - Stack Pointer : Armazena o endereço do topo da   pilha
+
+    SP - Stack Pointer : Armazena o endereço do topo da   pilha  ( informações colocadas primeiro, serão as ultimas a serem tiradas)
+
+                        Estrutira em SP
+        {   END                 Conteúdo          EX : .Stack 100h (tamanho da pilha em hexa)
+            ..
+            95
+            96
+            97
+            98                   C
+            99                   B
+            100                  A
+        }
+
     
     RI - Registrador de instruções: Armazena a intrução de que está sendo executada 
 

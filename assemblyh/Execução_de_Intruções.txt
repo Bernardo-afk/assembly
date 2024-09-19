@@ -10,4 +10,31 @@ Ex :
     PC <-- Pc (atualizado) ; PC : armazena o endereço da próxima instrução a ser executada 
     RDM <-- MEM[REM] (intrução lida) ; RDM vai receber o MEM(REM) - endereço da memoria do dado lida
     
-    2- Decodificação da intrução
+    2- Decodificação da intrução [Decodificação]
+Ex : 
+    RI <-- RDM (intrução)   ;  RI vai armazena a intrução de que está sendo executada 
+
+
+    3- Busca dos Opedandos da intrução na memória ( QUANDO OUVER )  [busca de operandos]
+Ex : 
+    REM <-- PC
+    Read (sinal de controle)
+    PC<-- PC ( Atualizado )
+    RDM <-- MEM [REM] (operando lido )
+
+    4- Execução da intrução ( depende da intrução)  [execucão]
+
+ --- OBS : QUando [] é usado , significa que estmos acessando um conteúdo de memória, cujo endereço está entre colchetes (EX: MEM[] )
+
+            
+
+            Formato das intruções de uma CPU Hipotética 
+1-         4bits    2bits    2bits   { isso é referente a uma palavra de 8 bits}
+           Opcode   reg1     reg2 
+
+2-         Duas Palavras de 8 bits 
+        Palavra 1 :     4bits     2bits   2 bits
+                       Opcode      reg1    00 
+
+        Palavra 2 :     8 bits 
+                    Operando-número    ( imediato ou endereço )               
