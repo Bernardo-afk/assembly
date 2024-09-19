@@ -1,0 +1,16 @@
+1) MOV R1,R0
+
+    1- Fetch das intruções                                     OPCODE  PC   0000 01 00   //   PC +1 0000 01 01  
+          REM <-- PC  ;010 (posição de intruções em PC )       R0   0101 xx xx ( intrução para pushar olgo do reg) EX : 0101 10 11 // 
+          Read                                                                  Ex : se a valor da intrução de PC(010) for 0000 01 00 
+          PC < -- PC+1                                                              
+          RDM <-- MEM[REM] ; 010 (posição de intruções em pc )                      RDM vai receber 0000 01 00              
+
+
+
+
+
+
+
+
+
