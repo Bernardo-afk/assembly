@@ -1,0 +1,84 @@
+
+
+   CPU - unidade de processamento 
+ {
+UC - Unidade de controle 
+ULA - Unidade Logica e Aritmética 
+GPR - registradores de proposito geral - ( elementos de memoria ( circuitos) responsaveis por armazenar os dados que são utilizdos
+durante a  execução de um programa ( intruções )  )  
+
+
+----------- GPR 
+
+                        Registradores específicos 
+    PC -  Program Counter : Armazen o endereço da próxima intruções a ser executada  
+
+    SP - Stack Pointer : Armazena o endereço do topo da   pilha
+    
+    RI - Registrador de instruções: Armazena a intrução de que está sendo executada 
+
+    RDM - Registrador de dados de memória : Armazena os dados de Memória ( lidos ) ou que vão para a memória ( escritos )
+
+    REM - Registrador de Endereços de memória : armazena o endereço enviado para a memória, quando ocorre um acesso á mesma ( leitura ou escrita )
+
+
+ }
+
+
+Unidades de Entrada e Saída  (responsavel por ferenciar a ligação de : CPU-MEM-Barramentos e os periféricos)
+ {
+
+    Interfaces - circuito que contabiliza a comunicação ( protocolo)  ( o controle da transferência é feita pela CPU)
+
+    Canais de E/S - circuito que controla e compatibilizam a comunicação ( A CPU apenas inicia a tranferência )
+
+    Processadores de E/S - são CPUs dedicadas a fazer E/S de dados. Iniciam e controlam a comunicação 
+
+
+ }
+
+Barramentos ( conjunto de fios que faz a ligação física entre as diversas unidades) 
+{
+
+Barramento de Endereços : por onde trafegam os Endereços 
+Barramento de Dados : por onde trafegam os Dados
+Barramento de Controle : por onde trafegam os Sinais de Controle 
+
+
+    ---- Obs 
+Internamente, na CPU, existe um barramento interno de daods que liga os registradores com a ULA e a UC, e um 
+barramento interno de controle que liga a UC a todos os elementos da CPU 
+
+
+}
+
+
+
+
+
+
+
+
+
+
+Memórias 
+{
+
+RAM - Random Acess Memory : memória de acesso aleatório, volátil 
+        SRAM - Ram estática : só se altera quando se escreve nela ou quando desliga a tensão de alimentação 
+        DRAM - Ram dinâmica : periodicamente é necessário reescrever o seu conteúdo (refresh de memória)
+ROM - Read Only Memory: memória somente de leitura, não volátil 
+        ROM - gravação feita pelo fabricante, não apagavel 
+        PROM - Programmable ROM: programação feita pelo usuário, não apagavel 
+Flash - Memória semicondutora, não volátil e de escrita e leitura , apagável         
+
+}
+
+
+Siglas uteis 
+{ 
+
+ISA - Instruction Set Architecture ( conjunto de intruções de linguagem de máquina)
+
+
+}
