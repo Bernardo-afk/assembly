@@ -1,0 +1,13 @@
+
+
+                Execução de uma intrução pela CPU 
+
+
+    1 - Leitura de intrução da memória principal [Fetch da intrução]
+Ex :
+    Rem <-- PC    ; REM (Registrador de dados de memória) - Quando ocorre um acesso á mesma ( leitura ou escrita )
+    Read (sinal de controle)
+    PC <-- Pc (atualizado) ; PC : armazena o endereço da próxima instrução a ser executada 
+    RDM <-- MEM[REM] (intrução lida) ; RDM vai receber o MEM(REM) - endereço da memoria do dado lida
+    
+    2- Decodificação da intrução
