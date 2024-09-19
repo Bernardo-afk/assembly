@@ -1,16 +1,43 @@
 1) MOV R1,R0
 
-    1- Fetch das intruções                                     OPCODE  PC   0000 01 00   //   PC +1 0000 01 01  
+    1- Fetch das intruções                                     OPCODE  PC   0000 00 10   //   PC +1 0000 01 01  
           REM <-- PC  ;010 (posição de intruções em PC )       R0   0101 xx xx ( intrução para pushar olgo do reg) EX : 0101 10 11 // 
           Read                                                                  Ex : se a valor da intrução de PC(010) for 0000 01 00 
           PC < -- PC+1                                                              
           RDM <-- MEM[REM] ; 010 (posição de intruções em pc )                      RDM vai receber 0000 01 00              
+          RI <-- RDM   ;                                                            RI vai recever 0000 01 00
+
+   2- Decodificação
+   
+   3- Busca de Operandos 
+    Não Possui 
+
+   4- Execução
+            R1<-- R0                                            R1 <-- 0101 11 01 
 
 
 
 
+ 
+2) MOV R2,16                                    OPCODE 1000 00 00 // PC 0000 00 01 PC+1  0000 00 10 
+                                                        R2 0101 0001  // R2 ( novo ) 0001 0000
+1- fetch das intruções                                                                  PILHA 000
+    REM <-- PC ; 001                                                                          001       1000 00 00  (intrução  de mov )                                                     
+    Read                                                                                      010       0001 00 00 (Instrução de ADD)
+    Pc<-- PC +1 ; 010                                                                         011     
+    RDM<-- MEM[REM] ;                                                                         100  
+    RI<-- RDM ( RI - registrador de intruções , armazena a intrução a ser executada)           ..
 
+2- Decodificação 
+        Decodificação
 
+3 - Busca de Operandos 
+        REM <-- PC(pc atualizado) ; 010 
+        Read
+        PC<--Pc+1 ;  011 
+        RDM<-- MEM[REM] ; 
+        RI<-- RDM
 
+4- Execução 
 
-
+    R1<-- RDM ; r2<--16           R2 =  0001 0000 ( 16 em binario)
