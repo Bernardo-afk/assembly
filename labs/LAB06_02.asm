@@ -6,16 +6,12 @@ title repeat
 
 main proc 
 
-
-
-
-mov cx, 0 ; iniciar contador 
+mov cx, -1 ; iniciar contador 
 
 mov ah,1 
 l1:
 
 int 21h 
-
 inc cx ; incrementar contador 
 cmp al,0dh
 
