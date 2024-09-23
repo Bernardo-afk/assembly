@@ -1,25 +1,17 @@
-title While_conta
+title while
 .model Small 
-.data
-     msg1 db 10,13, "digite caracteres : $"
-
 .code
 
 main proc
 
-          mov  ax,@data
-          mov  ds,ax
 
-          mov  ah, 9
-          lea  dx, msg1     ; ler msg
-          int  21h
 
           mov  cx,0         ; Iniciar loop em 0
 
      l1:  
           mov  ah, 1        ; pedir entrada de caractere
           int  21h
-          cmp  al, 0dh      ; Comparador CR  ( ler até entrada = cr)
+          cmp  al, 0dh      ; Comparador CR 
           je   fim
 
           inc  cx           ; Incrementar o contador
@@ -34,7 +26,7 @@ main proc
 
 main endp
 
-          mov  ah, 4ch
+          mov  ah, 4ch   ; finalizar programa 
           int  21h
 
 end main 
