@@ -1,25 +1,34 @@
 title repeat
-
 .model Small 
 .data
-
 .code 
 
 
 main proc 
 
 
+
+
 mov cx, 0 ; iniciar contador 
 
-
+mov ah,1 
 l1:
 
-mov ah,1 
-int 21h ; 
-mov dl,al 
 int 21h 
+
+inc cx ; incrementar contador 
 cmp al,0dh
-jne l1  
+
+jne l1 
+
+
+fim: 
+mov ah,2
+
+pl:
+         mov  dl, '*'
+         int  21h         ; loop imprimir '*'
+         loop pl
 
 
 
