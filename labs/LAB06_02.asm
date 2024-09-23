@@ -29,3 +29,12 @@ mov ah,4ch      ;finalizar programa
 int 21h 
 
 end main 
+
+
+
+
+
+
+; A diferença entre este programa e o primeiro ,
+; seria que um loop while verifica a condição no início do loop, e se a condição for falsa, o corpo do loop não é executado nem uma vez.
+; Por outro lado, um loop repeat verifica a condição no final do loop, e se a condição for falsa, o corpo do loop é executado pelo menos uma vez.
