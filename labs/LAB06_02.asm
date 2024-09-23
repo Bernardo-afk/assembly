@@ -1,6 +1,5 @@
 title repeat
 .model Small 
-.data
 .code 
 
 main proc 
