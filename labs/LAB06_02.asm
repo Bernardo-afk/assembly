@@ -4,7 +4,7 @@ title repeat
 
 main proc 
 
-mov cx, -1 ; iniciar contador 
+mov cx, 0 ; iniciar contador 
 mov ah,1 
 
 l1:
