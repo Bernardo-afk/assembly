@@ -11,7 +11,7 @@ durante a  execução de um programa ( intruções )  )
 ----------- GPR 
 
                         Registradores específicos 
-    PC -  Program Counter : Armazen o endereço da próxima intruções a ser executada  
+    PC -  Program Counter : Armazen o endereço da próxima intruções a serem executadas
         
                         Estrutura em PC 
         {    END                Conteúdo 
