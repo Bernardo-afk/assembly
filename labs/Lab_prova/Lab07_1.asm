@@ -38,7 +38,7 @@ main proc
 
     ; Loop de subtração
     l1:  
-         cmp bl, cl       ; comparar , para se satisfazer a confição jl
+         cmp bl, cl       ; comparar , para se satisfazer a condição jl
          jl  fim
          sub bl, cl       ; subtrair ( enunciado )
          inc bh
