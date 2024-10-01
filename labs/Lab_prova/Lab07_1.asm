@@ -20,7 +20,9 @@ main proc
          int 21h
 
          mov ah, 1
-         int 21h
+         int 21h   
+         
+         
          mov bl, al       ; Salvar o dividendo em Bl
          sub bl, 30h      ; Converter em Número
    
