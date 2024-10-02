@@ -27,20 +27,16 @@ main proc
     int 21h
 
     mov ah, 1
-    int 21h                 ; 
-    mov cl, al              ; colocar numero em cl 
-    sub cl, 30h            ; convert to number
+    int 21h                 ;              ; colocar numero em cl 
+    sub al, 30h            ; convert to number
 
-
-
-xor bh,bh    ; usar como varivel que receberá a multiplicação 
-
+mov cl,al           ;
+mov al, bl
+xor bl,bl
 
 l1:
-    add bh, bl
-    dec cl
-    jnz l1      
-
+    add bl, al
+    loop l1
 
 
 
@@ -51,11 +47,13 @@ l1:
 
 
 
-    add al, 30h      ; convert to ASCII
+
+    add bl, 30h      ; convert to ASCII
     mov ah, 2
-    mov bh, al
+    mov dl,bl
     int 21h
 
+    jmp fim
 fim:
     ; saida 
     mov ah, 4ch
