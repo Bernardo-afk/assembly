@@ -1,52 +1,44 @@
-title ativ1
-
-
-.model small 
-
+title atividade 1
+.model small
 .stack 100h
-
-
-
-
 .data
-msg1 db 10,13, "digite um número binário, de no máximo 16bits de entrada,  : $"
+    msg  db 'Digite um número binário: $'
+ 
 
-.code 
+.code
+    main:       
+                mov ax, @data
+                mov ds, ax
 
+    ; Exibir mensagem
+                lea dx,msg
+                mov ah, 09h
+                int 21h
 
-main proc 
+    ; Inicializar BX como 0
+                xor bx, bx
 
+    leitura:    
+    ; Ler um caractere
+                mov ah, 01h
+                int 21h
 
+    ; Verificar se o caractere é CR (valor ASCII 13)
+                cmp al, 13
+                je  fim_leitura
 
-mov ax,@data
-mov ds,ax
+                sub al, '0'        ; Converte caractere ASCII para valor binário
 
+                        
+                shl bx, 1          ; Deslocar BX 1 casa para a esquerda
 
-mov ah,9
-lea dx,msg1    ; ler string msg1 
-int 21h 
+    ;
+                or  bx, ax         ; O valor lido  é armazenado no LSB
 
+                jmp leitura
 
-
-
-mov ah,1
-int 21h 
-mov bx,ax           ; bx é o registrador de armazenamento 
-
-
-
-
-
-
-
-
-
-
- main endp 
-
-fim : 
-mov ah,4ch
-int 21h 
-
-
- end main 
+    fim_leitura:
+   
+                mov ax, 4Ch        ; Finalizar o programa
+                int 21h
+end main
