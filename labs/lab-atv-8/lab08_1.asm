@@ -1,4 +1,4 @@
-title atividade 1
+title atividade_1
 .model small
 .stack 100h
 .data
@@ -36,6 +36,10 @@ title atividade 1
                 or  bx, ax         ; O valor lido  é armazenado no LSB
 
                 jmp leitura
+
+
+
+main endp 
 
     fim_leitura:
    
