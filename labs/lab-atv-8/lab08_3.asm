@@ -1,29 +1,31 @@
+title atividade3
 .MODEL SMALL
 .STACK 100h
 .CODE
-START:
-    XOR BX, BX        ; Inicializa BX com 0
+main proc
+    XOR BX, BX        
 
-ReadChar:
-    MOV AH, 01h       ; Ler caractere do teclado
-    INT 21h           ; Chama interrupção
+prox:
+    MOV AH, 01h       
+    INT 21h           
     CMP AL, 0Dh       ; Verifica se é Enter (CR - 0Dh)
-    JE EndProgram     ; Se for Enter, finaliza o programa
+    JE fim     ; Se for Enter, finaliza o programa
 
     CMP AL, '9'       ; Verifica se é um dígito 0-9
-    JG IsAlpha        ; Se for maior que 9, verifica se é A-F
+    JG naohexa        ; Se for maior que 9, verifica se é A-F
     SUB AL, '0'       ; Converte dígito 0-9 para valor numérico
-    JMP ConvertDone   ; Pula para o fim da conversão
+    JMP converter   
 
-IsAlpha:
+naohexa:
     SUB AL, 'A'-10    ; Converte letra A-F para valor numérico
 
-ConvertDone:
+converter:
     SHL BX, 4         ; Desloca BX 4 bits à esquerda
     OR BX, AX         ; Insere o valor convertido nos 4 bits inferiores
-    JMP ReadChar      ; Repete para o próximo caractere
+    JMP prox      ; Repete para o próximo caractere
 
-EndProgram:
-    MOV AH, 4Ch       ; Função para encerrar o programa
-    INT 21h           ; Interrupção para sair
-END START
+main endp
+fim:
+    MOV AH, 4Ch       
+    INT 21h           
+END main
