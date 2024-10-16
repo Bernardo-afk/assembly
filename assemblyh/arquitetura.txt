@@ -105,3 +105,21 @@ ISA - Instruction Set Architecture ( conjunto de intruções de linguagem de má
 
 
 }
+
+
+
+
+
+Di (destination) e Si ( source)   ( como se fossem ponteiros)  ( pode usar cx para indicar quantos bites quert transfeirr )
+Por exemplo, tranferir um endereço de memória de SI para DI  ( ex : 5500h --> AE5Eh )
+
+Cs (code segment )  ds ( data segment )
+
+
+Tipos 
+uso geral ax bx cx dx 
+apontadores : Si di 
+segmentos : cs ds 
+flags : ...
+
+
