@@ -114,7 +114,10 @@ Di (destination) e Si ( source)   ( como se fossem ponteiros)  ( pode usar cx pa
 Por exemplo, tranferir um endereço de memória de SI para DI  ( ex : 5500h --> AE5Eh )
 
 Cs (code segment )  ds ( data segment )
-
+cs:ip   ( como aparece) 
+valor do stack é gravado em SS:SP 
+ss  - segmento do stack 
+ds - segmento de dados 
 
 Tipos 
 uso geral ax bx cx dx 
