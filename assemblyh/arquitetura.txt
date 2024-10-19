@@ -126,3 +126,49 @@ segmentos : cs ds
 flags : ...
 
 
+---
+
+loops 
+
+IF :                if al<=BL   ( cmp al,bl // JA label)
+                    else ( jmp label) 
+
+LOOP :          tem como parametro o registrador CX ( contador )           
+                ele salta para o rótulo de destino , e decrementa o contador (cx) 
+
+FOR LOOP     :    ex : for 80vezes :     mov cx,80
+                                        mov ah,2
+                                        mov dl,""
+                                        label: int21h
+                                        loop label
+
+WHILE LOOP : while ( conição verdadeira ) ...     
+            ex : ler caracteres até CS ( carriage return ( enter) )
+                mov dx,0 
+                mov ah,1
+                int 21h 
+              label : cmp al,0  ; é caracter CR
+                        je label-fim saltar se caractere é CR ( no caso al,0 é o enter )
+                        inc dx
+                        int 21h
+                        jmp label   
+
+REPEAT LOOP :  Repeat (cod) until (condição)
+                Ex : ler caractere até CR 
+                            MOV DX,0
+                            MOV AH,1
+                    Label : 
+                            int 21h
+                            inc dx
+                            cmp al,0
+                            jne loop
+
+
+
+            
+
+
+
+
+
+
