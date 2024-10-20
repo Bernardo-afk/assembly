@@ -165,6 +165,21 @@ REPEAT LOOP :  Repeat (cod) until (condição)
 
 
 
+Deslocamento 
+    Para a direita - divide por 2
+    Para a esquerda - multiplica por 2
+
+XOR  reg1 reg2 -   Operando xor aplica o conteudo do reg2 no reg1
+AND reg1,bits ( notação : 00000000b)    - compara os beats do reg1 com os beats estipulados, talque o resultadp no rg será : manter os beats 1 e 0 iguais , e os que forem diferentes ele 0
+            ex : al = 11010000
+                AND al , 11001000
+                saida = 11000000
+
+OR Pos_de_memória,Reg1        - armazena o resultado de bx na posição de memória     
+
+
+
+
             
 
 
