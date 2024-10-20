@@ -1,76 +1,83 @@
-title atividade2
-.model small
+.model small 
 .stack 100h
+
 .data
-    msg db 10,13,'Digite um número binário: $'
+
+    msg  db 10,13, "Digite um número, precione enter para parar $ "
 
 .code
-main:       
-    mov ax, @data
-    mov ds, ax
 
-    ; Exibir mensagem
-    lea dx, msg
-    mov ah, 09h
-    int 21h
+main proc
 
-    ; Inicializar BX como 0
-    xor bx, bx
+         MOV  AX, @DATA
+         MOV  DS, AX
 
-leitura:    
-    ; Ler um caractere
-    mov ah, 01h
-    int 21h
 
-    ; Verificar se o caractere é CR (valor ASCII 13)
-    cmp al, 13
-    je mostrarnumero
+         MOV  AH, 09H
+         LEA  DX, msg
+         INT  21H
 
-                                ; Verifica se o caractere é '0' ou '1'
-    cmp al, '0'
-    jb leitura  ; Se for menor que '0', lp
-    cmp al, '1'
-    ja leitura  ; Se for maior que '1', lp
+         xor  bx,bx
+    mov cx,0
 
-    sub al, '0'        ; Converte caractere ASCII para valor binário
+    ler: 
 
-    shl bx, 1          ; Desloca BX para a esquerda
-    mov ah, al      
-    and ah, 1          ; Garantir que apenas o bit relevante seja usado ( mover até antes do ultimo bit considerado) 
-    or  bl, ah         ; Usar  BL para combinar o valor
+         mov  ah,1
+         int  21h
 
-    jmp leitura
+         cmp  al,0dh   ; compara se é enter 
+         je   pl
 
-mostrarnumero: 
-    
-    mov cx, 16   ; delimitar binario de até 16 dígitos           
+         inc cx
 
-exibir_bits:
-                                ; Rotacionar BX à esquerda
-    rol bx, 1           ; Rotação à esquerda de BX (MSB --> CF)
+         and  al, 0fh    ;   transforma em número 
 
-    jc exibir_1         ; Se CF = 1, vai exibir '1'
-    
-    ; Else  CF = 0
-    mov dl, '0'         ; Exibe '0'
-    jmp exibir_caractere
+         shl  bx,1
+         or   bl,al
 
-exibir_1:
-    mov dl, '1'         ; Exibe '1'
+             cmp cx,16
+            je pl
+            jmp ler 
 
-exibir_caractere:
-    mov ah, 02         ; Mostrar caractere 
-    int 21h             ; Exibe o caractere no monitor
+pl : 
 
-    loop exibir_bits    ; volta para o loop inicial 
-
-    ; Finalizar o programa
-    mov ax, 4Ch       ; Finaliza o programa
-    int 21h
-end main
+mov dl,0h
+int 21h 
+jmp mostrar 
 
 
 
 
-;;; observação : mesmo se o número inserido não tiver 16 dígitos, a "joga pra lá " vai fazer com que seja preenchido com
-;;;                 0 os espaços ..... ex : entrada : 00101    , saída 0000000000000101
+mostrar : 
+
+     cmp cx,0 
+    je fim 
+
+    shl bx,1
+
+    jc monitor 
+    jnc monitor2 
+
+
+    monitor : 
+    mov ah,2
+    mov dl,'1'
+    int 21h         
+    dec cx 
+    jmp mostrar 
+
+    monitor2: 
+    mov ah,2
+    mov dl,'0'
+    int 21h 
+     dec cx 
+     jmp mostrar 
+
+
+main endp
+    fim: 
+         mov  ah,4ch
+         int  21h
+
+
+end main 
