@@ -169,21 +169,69 @@ Deslocamento
     Para a direita - divide por 2
     Para a esquerda - multiplica por 2
 
-XOR  reg1 reg2 -   Operando xor aplica o conteudo do reg2 no reg1
+XOR  reg1 reg2 -   Operando xor aplica o conteudo do reg2 no reg1      ( pode ser usado para inverter : deve-se ter um 1 na posição em que deseja este efeito )
 AND reg1,bits ( notação : 00000000b)    - compara os beats do reg1 com os beats estipulados, talque o resultadp no rg será : manter os beats 1 e 0 iguais , e os que forem diferentes ele 0
-            ex : al = 11010000
+            ex : al = 11010000                  - usado para zerar beats ( clear/reset) específicos : basta ter um 0 na posição que deseja zerar
                 AND al , 11001000
                 saida = 11000000
 
 OR Pos_de_memória,Reg1        - armazena o resultado de bx na posição de memória     
+                                -ou forçar o valor 1 (setar) em bits específicos : deve-se ter um 1 na posição que se deseja este efeito
 
 
 
+Colocar MSB e LSB em um registrdor 
 
-            
+        OR reg1,8001h    - reg depois - 1111 0100 0100 0101b
+
+Converter um codigo ascii de um digito numérico em um valor binário 
+    Ex al = 39h
+         função 9 
+         AND Al,0Fh ; 0000 1111   Al depois - 0000 0111b
+
+Converter caractere de minuscula em maiuscula 
+    ex :   a = 61h - 0110 0001
+            A - 41h - 0100 0001
+                 Usar - AND AL, 0DFh    - Al depois 0100 0001b
+        Mascara -    0DFh - 1101 1111
+   
+
+Para verificar se o conteudo de um registrador é 0 
+        OR reg1,reg1 
+        Olhe o ZF ( zero flag )
+        Obs : essa forma é mais rápida de executar do que cmp cx,00h
 
 
+NOT - usado para inverter bits 
+        ex : not ax - inverte os bits de ax 
+                not al 
+                not byte1 
 
+ZERO - SF,ZF,PF refletem o resultado ( armazenado no operando de destino)
+        usado para testar resultados usando AND 
+        talque test ax,bx ; a operação and entre ax,bx  ( não obtendo resultado) , apenas alterando as FLAGS a cima 
+
+Testar se o número é par 
+            test reg1,01h
+            Ver no ZF é 1 , se for, o número é par 
+            EX : test 4444h,0001h ; zf= 1 
+
+ exemplo de programa para checar se o número é negativo ou positivo   : 
+                                                test cl,80h 
+                                                jnz pt2 
+                                                (se for pos)
+                                                pt2: 
+                                                (se for neg)
+
+    SHL (shift left) 
+    SAL (shift aritmetic left) 
+    SHR ( Shift right )
+    SAR (Shift right)
+       SF,ZF,PF
+    CF - contem o último bit deslocado para fora 
+    OF =1 se ocorrer troca de sinal após o último deslocalmente 
+
+    
 
 
 
