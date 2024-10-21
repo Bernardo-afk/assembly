@@ -177,7 +177,8 @@ AND reg1,bits ( notação : 00000000b)    - compara os beats do reg1 com os beat
 
 OR Pos_de_memória,Reg1        - armazena o resultado de bx na posição de memória     
                                 -ou forçar o valor 1 (setar) em bits específicos : deve-se ter um 1 na posição que se deseja este efeito
-
+                                - OR bl,al - insere o bit menos significativo de al, em bl 
+                        
 
 
 Colocar MSB e LSB em um registrdor 
@@ -232,6 +233,10 @@ Testar se o número é par
     OF =1 se ocorrer troca de sinal após o último deslocalmente 
 
     
-
-
-
+    ROL (rotate left)
+    ROR(rotate right)
+    RCL ( rotate carry left)
+    RCR ( rotate carry right)
+        SF,ZF,PF - ultimo resultado da rotação 
+        cf - contem o ultimo beat jogado para fora 
+        OF = 1 se ocorrer sinal após a troca 
