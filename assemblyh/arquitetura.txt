@@ -240,3 +240,7 @@ Testar se o número é par
         SF,ZF,PF - ultimo resultado da rotação 
         cf - contem o ultimo beat jogado para fora 
         OF = 1 se ocorrer sinal após a troca 
+
+      sub al,37h   ; converter letra em binario 
+        ou add dl,37h
+
