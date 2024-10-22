@@ -69,7 +69,7 @@ Barramento de Controle : por onde trafegam os Sinais de Controle
 
 
     ---- Obs 
-Internamente, na CPU, existe um barramento interno de daods que liga os registradores com a ULA e a UC, e um 
+Internamente, na CPU, existe um barramento interno de dados que liga os registradores com a ULA e a UC, e um 
 barramento interno de controle que liga a UC a todos os elementos da CPU 
 
 
