@@ -244,7 +244,7 @@ Testar se o número é par
       sub al,37h   ; converter letra em binario 
         ou add dl,37h
 
-
+-----------------------------------------
 
 Vetores 
 
@@ -339,4 +339,3 @@ constante [reg_de_base + reg_índice + variável]
                                 - SI,DI e BX juntamente com o registrador de segmento DS
                                 - SI,DI e BX juntamente com o registrador de segmento SS
 
-                                
