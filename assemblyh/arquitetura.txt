@@ -244,3 +244,99 @@ Testar se o número é par
       sub al,37h   ; converter letra em binario 
         ou add dl,37h
 
+
+
+Vetores 
+
+Exemplos 
+
+MSG DB 'abcde'  ; vetor  composto por um string de 5 caracteres ascii
+W DW 1010h,1020h,1030h ; vetor de 3 valores de 16 bits 
+
+Operador DUP  ; define vetores com valores reptidos (duplicatas)
+
+
+EX : 
+
+        Gama DB 100DUP(0)  ; cria um vetor de 100 bytes com o valor inicial 0, apartir do offset definido por Gama
+        Beta dw 200DUP(?)   ; cria um vetor de 200 palavras (16 bits ) não inicializados, a partir do offset beta
+
+
+LINHA db 5,4,3 DUP (2,3 DUP(0),1) ; DUP's encadeados
+Igual a = Linha db 5,4,2,0,0,0,1,2,0,0,0,1,2,0,0,0,1
+
+
+
+
+Modo de endereçamento 
+
+Modo Direto : (determinado no .data )
+                                Dado DB 5
+                                mov al,dado 
+
+
+Modo Indireto Por registrador 
+O offset do endereço do operando está armazenado em um registrado 
+
+                - o registrador atua como um ponteiro para a posição da memória 
+                - formato do operando : [registrador ]
+
+        Registradores Utilizados :      
+                BX,SI,DI juntamente com o registrador de segmento DS o endereço é formado por DS : [registrador]
+
+                mov BX,OFFSET DADO
+                mov AL,[BX]
+
+                BP juntamente com o segmento SS o endereço é formador por SS:BP
+
+     
+
+Modo Base 
+                O offset do Endereço do operando é obtido adicionando um Deslocamento ao conteúdo de um registrador base 
+
+Formatos possíveis do operando:
+• [registrador + deslocamento] ou [deslocamento + registrador]
+• [registrador] + deslocamento ou deslocamento + [registrador]
+• deslocamento [registrador]
+
+                Registradores Utilizados : 
+                BX ( base register) juntamente com o registrador de segmento DS 
+                BP ( base pointer ) juntamente com o registrador de segmento SS
+
+
+
+
+
+Modo Indexado (Indexed Mode)
+                                 O offset do endereço do operando é obtido adicionando um deslocamente ao conteúdo de um registrador indexado 
+                                 As opções de deslocamento são as mesmas do Modo por Base 
+Formatos possíveis do operando:
+[registrador + deslocamento] ou [deslocamento + registrador]
+[registrador] + deslocamento ou deslocamento + [registrador]
+deslocamento [registrador]
+
+                        Registradores utilizados: 
+                                SI e DI juntamente com o registrador de segmanto DS 
+
+
+Modo por base Indexado 
+
+                                O offset do endereço do operando é obtido somando : 
+                                                - O conteudo de um registrador de base ( BX ou BP )
+                                                        - o conteúdo de um registrado de indice ( SI ou DI)     
+                                                                - Opcionalmente , o offset de endereço de uma variável 
+                                                                        - Opcionalmente, uma constante ( positiva ou negativa)
+
+Formatos possíveis do operando:
+variável [reg_de_base] [reg_índice]
+variável [reg_de_base + reg_índice + constante]
+constante [reg_de_base + reg_índice + variável]
+[reg_de_base + reg_índice + variável + constante]
+
+
+
+                        Registradores utilizados        
+                                - SI,DI e BX juntamente com o registrador de segmento DS
+                                - SI,DI e BX juntamente com o registrador de segmento SS
+
+                                
