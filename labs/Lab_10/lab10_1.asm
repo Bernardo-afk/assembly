@@ -2,7 +2,6 @@
 .stack 100h 
 
 
-
 vetor MACRO linha,coluna
     
           mov al,MATRIZ4X4[linha+coluna]    ;  move para al o valor desejado
