@@ -266,6 +266,30 @@ LINHA db 5,4,3 DUP (2,3 DUP(0),1) ; DUP's encadeados
 Igual a = Linha db 5,4,2,0,0,0,1,2,0,0,0,1,2,0,0,0,1
 
 
+---------------------------------------
+UTIL 
+
+SI ( source index ) = usado em instruções de movimentação e comparação de strings 
+SI aponta para o endereço de fonte ( source )
+SI é usado com DS (data segment), para apontar para dados de memória
+
+DI ( destination index ) = Usado para operações de destino em manipulação de strings 
+DI é associado a ES ( extra segment )
+DI é util em cópia de dados ou para contrução de estruturas de dados complexos em memória 
+
+BP ( base pointer ) = é usado para acessar variáveis locais dentro de uma sub-rotina 
+BP quando é usado,  ele armazena o endereço da base da pilha, para facilitar o acesso as parametros e variaveis locais 
+BP é usando com SS ( stack segment) , o que permite acessar a pilha de maneira mais flexível
+
+SS ( stack segment ) = É o registrador de segmento que indica o início do segmento de pilha 
+SS - A pilha é usada para armazenar endereços de retorno , parâmetros e variáveis locais 
+SS - qualquer operação que envolva a pilha ( como push e pop ) utiliza o segmento SS em conjunto com o ponteiro de pilha ( SP )
+
+
+
+
+
+
 
 
 Modo de endereçamento 
@@ -339,3 +363,13 @@ constante [reg_de_base + reg_índice + variável]
                                 - SI,DI e BX juntamente com o registrador de segmento DS
                                 - SI,DI e BX juntamente com o registrador de segmento SS
 
+
+
+Comando XCHG 
+
+        XCHG destino,origem 
+
+        exemplo : 
+                        mov ax,10
+                        mov bx,5
+                        xchg ax,bx ; bx=10 , ax = 5

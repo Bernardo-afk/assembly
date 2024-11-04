@@ -1,7 +1,10 @@
-title conversão 
-
+title CONVERSOR
 .model small 
 
+
+; ---  ESPAÇO PARA MACROS 
+
+; macro limpa tela 
 move_XY macro x,y       
 
             push ax
@@ -25,124 +28,117 @@ endm
 
 
 
+; --- FIM MACROS 
+
 
 
 
 .data 
 
 
-home db 10,13 , "Qual sera a base do primeiro numero inserido ? $"
-msg1 db 10,13 , "Digite 1 - Binario $ "
-msg2 db 10,13 , "Digite 2 - hexa $ "
-msg3 db 10,13 , "Digite 3 - decimal $ "
 
-home2 db 10,13 , "Digite qual base você quer que o número apareça 4"
-msg4 db 10,13 , "Digite 1 - Binario $ "
-msg5 db 10,13 , "Digite 2 - hexa $ "
-msg6 db 10,13 , "Digite 3 - decimal $ "
+home_message db 10,13, "Qual numero voce quer dar como entrada ?"
 
-Numero_convertido db 10,13, "O novo número é ; $"
+msg1 db 10,13, "1 - Hexa"
+msg2 db 10,13, "2 - Binario"
+msg3 db 10,13, "3 - Decimal"
 
-Entrada_numero db 10,13, "Digite o número : $"
-.code 
+
+
+
+.code    
 
 
 main proc 
 
-mov ax,@data    ; 
-mov ds,ax
-
-    move_XY  25,0 
-
-call chamada
+mov ax,@data 
+mov ds , ax 
 
 
+; programa 
+
+    call Home 
+    move_XY 25, 0        ; Posiciona o cursor
 
 
 
 
-chamada proc 
-                        MOV      AH,0               ; limpa tela 
-                        MOV      AL,3
-                        INT      10H
-mov ah,9
-lea dx, home 
+
+
+
+
+
+
+
+
+; FINALIZAR O PROGRAMA 
+mov ah,4ch 
 int 21h 
-
-
-mov ah,9
-lea dx, msg1 
-int 21h 
-
-mov ah,9
-lea dx, msg2
-int 21h 
-
-mov ah,9
-lea dx, msg3
-int 21h 
-
-
-mov ah,2            ; pula linha 
-mov dl, 10
-int 21h 
-
-
-mov ah,1 ; pegar numero 
-int 21h 
-mov bl,al   ; salvar em bl 
-
-
-
-                             MOV      AH,0
-                            MOV      AL,3           ; limpar tela 
-                            INT      10H
-                             move_XY  25,0 
-
-
-
-cmp bl,2   ; ver qual é o número de entrada 
-je hexa
-;jg decimal 
-;jl binario 
-
-
-
-; saltos para pegar a entrada 
-
-
-hexa : 
-
-lea dx,Entrada_numero
-mov ah,9
-int 21h 
-
-
-
-
-
-ret 
-chamada endp
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 main endp 
-fim: mov ah,4Ch
- int 21h 
+
+
+
+;   ----------- ESPAÇO PARA PROCEDIMENTOS 
+
+
+;Procedimento 1 
+
+    Home proc 
+                        MOV      AH,0 ; limpar tela
+                        MOV      AL,3
+                        INT      10H
+
+
+
+    ; Exibe as mensagens iniciais
+    MOV AH, 9
+    LEA DX, home_message
+    INT 21h
+
+    MOV AH, 9
+    LEA DX, msg1
+    INT 21h
+
+    MOV AH, 9
+    LEA DX, msg2
+    INT 21h
+
+    MOV AH, 9
+    LEA DX, msg3
+    INT 21h
+
+    ; Pula uma linha
+    MOV AH, 2
+    MOV DL, 10
+    INT 21h
+
+    ; Lê o número de entrada do usuário
+    MOV AH, 1
+    INT 21h
+    MOV BL, AL           ; Armazena a entrada em BL
+    SUB BL, 30h          ; Converte de ASCII para número (0-9)
+
+    xor ax,ax
+    add al,bl     ; salvar escolha  , para usar futuramente           
+    push ax  
+
+
+
+
+
+
+
+
+
+    ret 
+    Home endp 
+
+
+
+;  ----------------- FIM PROCEDIMENTOS 
+
+
+
+
 end main 
